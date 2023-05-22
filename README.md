@@ -6,7 +6,9 @@ The code is an alias command that utilizes OpenSSL to create a PFX file by combi
 1. Open your shell configuration file (e.g., `.bashrc`, `.zshrc`, or `.bash_profile`) using a text editor.
 2. Add the following line at the end of the file to create the alias:
 
-`alias createpfx='filename=$(ls *.crt | sed 's/\.crt$//') && (echo -e '\n\n' | openssl pkcs12 -export -out "${filename//_/.}.$(date +%Y)".pfx -inkey *.key -in *.crt -certfile $(find . -name "*.ca-bundle") -passin pass:'' -passout pass:'' ) && echo -e "\033[32mFile ${filename//_/.}.$(date +%Y).pfx has been created.\033[0m"'`
+```
+alias createpfx='filename=$(ls *.crt | sed 's/\.crt$//') && (echo -e '\n\n' | openssl pkcs12 -export -out "${filename//_/.}.$(date +%Y)".pfx -inkey *.key -in *.crt -certfile $(find . -name "*.ca-bundle") -passin pass:'' -passout pass:'' ) && echo -e "\033[32mFile ${filename//_/.}.$(date +%Y).pfx has been created.\033[0m"'
+```
 
 3.  Now you can execute the createpfx command in the directory of your SSL certificate.
 
