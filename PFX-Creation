@@ -1,0 +1,1 @@
+alias createpfx='filename=$(ls *.crt | sed 's/\.crt$//') && (echo -e '\n\n' | openssl pkcs12 -export -out "${filename//_/.}.$(date +%Y)".pfx -inkey *.key -in *.crt -certfile $(find . -name "*.ca-bundle") -passin pass:'' -passout pass:'' ) && echo -e "\033[32mFile ${filename//_/.}.$(date +%Y).pfx has been created.\033[0m"'
